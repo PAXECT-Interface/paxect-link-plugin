@@ -312,16 +312,82 @@ Sponsorship enables deterministic QA across operating systems.
 * **Naming/branding:** Do not use the PAXECT name/logo for derived projects without written permission; see `TRADEMARKS.md`.
 
 
+---
+
+
+✅ **Deterministic · Reproducible · Offline**
+
+© 2025 PAXECT Systems. Deterministic interoperability for the modern enterprise.
 
 
 
 
 
-
-
-Here you go — **1-op-1** in jouw format maar voor **PAXECT Link Plugin**. Plak dit als sectie **“Keywords & Topics”** in je repo.
+<p align="center">
+  <img src="ChatGPT%20Image%202%20okt%202025%2C%2022_33_51.png" alt="PAXECT logo" width="200"/>
+</p>
 
 ---
+
+
+<p align="center">
+  <img src="ChatGPT%20Image%202%20okt%202025%2C%2022_33_51.png" alt="PAXECT logo" width="200"/>
+</p>
+
+---
+
+
+<p align="center">
+  <img src="ChatGPT%20Image%202%20okt%202025%2C%2022_33_51.png" alt="PAXECT logo" width="200"/>
+</p>
+
+---
+
+
+
+<p align="center">
+  <img src="ChatGPT%20Image%202%20okt%202025%2C%2022_33_51.png" alt="PAXECT logo" width="200"/>
+</p>
+
+---
+
+
+<p align="center">
+  <img src="ChatGPT%20Image%202%20okt%202025%2C%2022_33_51.png" alt="PAXECT logo" width="200"/>
+</p>
+
+---
+
+
+<p align="center">
+  <img src="ChatGPT%20Image%202%20okt%202025%2C%2022_33_51.png" alt="PAXECT logo" width="200"/>
+</p>
+
+---
+
+
+<p align="center">
+  <img src="ChatGPT%20Image%202%20okt%202025%2C%2022_33_51.png" alt="PAXECT logo" width="200"/>
+</p>
+
+---
+
+
+
+
+<p align="center">
+  <img src="ChatGPT%20Image%202%20okt%202025%2C%2022_33_51.png" alt="PAXECT logo" width="200"/>
+</p>
+
+---
+
+
+<p align="center">
+  <img src="ChatGPT%20Image%202%20okt%202025%2C%2022_33_51.png" alt="PAXECT logo" width="200"/>
+</p>
+
+---
+
 
 ## Keywords & Topics
 
