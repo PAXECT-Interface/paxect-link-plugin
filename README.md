@@ -294,6 +294,9 @@ Sponsorship enables deterministic QA across operating systems.
 * CI/CD hardening and interoperability certification
 * Air-gapped deployment guidance
 
+ **How to get involved**
+- [Become a GitHub Sponsor](https://github.com/sponsors/PAXECT-Interface)  
+
 **Contact:**
 📧 enterprise@[PAXECT-Team@outlook.com](mailto:PAXECT-Team@outlook.com)
 
