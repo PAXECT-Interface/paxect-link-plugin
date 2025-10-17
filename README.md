@@ -236,19 +236,10 @@ Producer(s)            PAXECT Link                 Consumer(s)
 
 ---
 
-Helemaal mee. Hier is een **strakke, correcte** beschrijving voor **PAXECT Core** (zonder AEAD/SelfTune claims), plus een bijgewerkte mini-tabel met alle plugins gescheiden.
 
-### Ultra-short (voor tabel “Highlights”)
 
-**`.freq` v42 · multi-channel · CRC32+SHA-256 · cross-OS · offline · no-AI**
 
-### One-liner (voor About/README)
 
-**PAXECT Core — deterministic `.freq` v42 container: multi-channel relay with CRC32+SHA-256 integrity; cross-OS, offline, no-AI.**
-
----
-
-### Compacte plugin-tabel (correct gescheiden verantwoordelijkheden)
 
 | Plugin                         | Scope                           | Highlights                                                                           | Repo                                                                                                                           |
 | ------------------------------ | ------------------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
