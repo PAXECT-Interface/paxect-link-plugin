@@ -329,7 +329,7 @@ Sponsorship enables deterministic QA across operating systems.
 
 ✅ **Deterministic · Reproducible · Offline**
 
-© 2025 PAXECT Systems. Deterministic interoperability for the modern enterprise.
+Copyright© 2025 PAXECT Systems. Deterministic interoperability for the modern enterprise.
 
 
 
