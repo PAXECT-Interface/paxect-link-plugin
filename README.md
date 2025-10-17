@@ -339,6 +339,104 @@ Copyright© 2025 PAXECT Systems. Deterministic interoperability for the modern e
   <img src="ChatGPT%20Image%202%20okt%202025%2C%2022_33_51.png" alt="PAXECT logo" width="200"/>
 </p>
 
+[![Star this repo](https://img.shields.io/badge/⭐%20Star-this%20repo-orange)](../../stargazers)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](./LICENSE)
+[![CI](https://img.shields.io/badge/CI-passing-brightgreen.svg)](../../actions)
+[![CodeQL](https://img.shields.io/badge/CodeQL-active-lightgrey.svg)](../../actions)
+[![Issues](https://img.shields.io/badge/Issues-open-blue)](../../issues)
+[![Discussions](https://img.shields.io/badge/Discuss-join-blue)](../../discussions)
+[![Security](https://img.shields.io/badge/Security-responsible%20disclosure-informational)](./SECURITY.md)
+
+
+
+# PAXECT Core Complete
+
+Deterministic, offline-first runtime for secure, reproducible data pipelines. Cross-platform. Audit-ready.
+
+## Key capabilities
+
+* Deterministic by design (bit-identical results)
+* Offline-first (no network, no telemetry)
+* Enterprise audit (human summary + single-line JSON)
+* Observability endpoints (/ping, /ready, /metrics, /last)
+* Cross-OS parity (Linux, macOS, Windows)
+
+## System requirements
+
+* Python 3.9–3.12
+* No external services or internet access required
+
+## Quickstart
+
+Run the demos from the repository root:
+
+```bash
+python demos/complete_demo_01_quick_start.py        # Deterministic sanity [OK]
+python demos/complete_demo_02_integration_loop.py   # Multiple cycles, 0 failures [OK]
+python demos/complete_demo_03_metrics_health.py     # Burst safety summary
+python demos/complete_demo_04_health_metrics.py     # /ping /ready /metrics /last -> 200 OK
+python demos/complete_demo_05_ci_cd_pipeline.py     # Prints AUDIT_SUMMARY_JSON={...}
+```
+
+
+## Requirements
+
+- Python 3.9–3.12
+- No internet connection, no Docker, no pip packages
+- Place the following plugin blueprints in the **repository root** (same folder as `demos/`):
+  - `paxect_core.py`
+  - `paxect_link_plugin.py`
+  - `paxect_aead_enterprise.py`
+  - `paxect_polyglot_plugin.py`
+  - `paxect_selftune.py`
+
+### Expected signals
+
+* Demo 01: “Deterministic pipeline verified [OK]”
+* Demo 02: “… 0 failures”
+* Demo 03: “Deterministic under burst [OK]” + throttle/fail-safe summary
+* Demo 04: endpoints return 200 OK; metrics include uptime and request counts
+* Demo 05: single-line `AUDIT_SUMMARY_JSON={"bias_flags":0,"deterministic":true,...}` printed to stdout
+
+## Architecture (high level)
+
+* **Core**: deterministic container engine (encode/decode, CRC32, SHA-256)
+* **SelfTune**: deterministic safety/throttling (no randomness)
+* **Link**: inbox/outbox relay with byte-identical forwarding
+* **AEAD Hybrid**: authenticated encryption with reproducible outcomes
+* **Polyglot**: CLI bridges for stdin/stdout and file I/O
+
+
+
+---
+
+## Security
+
+* No external network calls, telemetry, or hidden dependencies
+* Deterministic state hashing and authenticated integrity checks
+* Audit outputs suitable for CI and SIEM ingestion (single-line JSON)
+
+## Data policy (default)
+
+* Per-operation input cap: 512 MB (configurable)
+* Adjust via environment variable: `PAXECT_MAX_INPUT_MB` (e.g., 8192 for 8 GB)
+* For larger data: use chunking or streaming
+
+## Support and governance
+
+* Issues → bug reports and feature requests
+* Discussions → design and integration topics
+* Security contact → private, coordinated disclosure (see `SECURITY.md`)
+* Contributions follow deterministic, audit-compliant development policies
+
+## License
+
+Apache-2.0. See `LICENSE`.
+
+
+
+
+
 ---
 
 
