@@ -361,10 +361,7 @@ Deterministic, offline-first runtime for secure, reproducible data pipelines. Cr
 * Observability endpoints (/ping, /ready, /metrics, /last)
 * Cross-OS parity (Linux, macOS, Windows)
 
-## System requirements
 
-* Python 3.9–3.12
-* No external services or internet access required
 
 ## Quickstart
 
