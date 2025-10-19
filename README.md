@@ -19,6 +19,8 @@
 Secure, deterministic file relay across processes, runtimes, and operating systems — fully **offline**.
 The **PAXECT Link Plugin** provides a reproducible, verifiable bridge by auto-encoding non-`.freq` files **to** `.freq` and auto-decoding `.freq` containers **to** raw files, powered by **PAXECT Core**.
 
+Plug-and-play with zero dependencies and no vendor lock-in.
+
 No cloud, no AI heuristics — just **byte-for-byte deterministic transport**.
 
 ---
