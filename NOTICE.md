@@ -1,4 +1,9 @@
-PAXECT Link plugin Plugin
+<p align="center">
+  <img src="ChatGPT%20Image%202%20okt%202025%2C%2022_33_51.png" alt="PAXECT logo" width="200"/>
+</p>
+
+
+## PAXECT Link plugin Plugin
 Copyright (c) 2025 PAXECT Interface
 
 Licensed under the Apache License, Version 2.0 (the "License");
