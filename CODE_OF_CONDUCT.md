@@ -31,7 +31,7 @@ Scope
 This Code of Conduct applies to all project spaces, including GitHub discussions, issues, pull requests, and any public or private communication related to the project.
 Enforcement
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting the project maintainers via: security@PAXECT-Team@outlook.com
+Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting the project maintainers via: PAXECT-Team@outlook.com
 
 All complaints will be reviewed and investigated promptly and fairly.
 Maintainers are obligated to respect the privacy and safety of reporters.
