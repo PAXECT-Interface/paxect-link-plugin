@@ -123,7 +123,7 @@ python3 -m pytest -v
 * Secrets, tokens, or credentials **must never** appear in source code.
 
 For confidential security concerns, report privately to:
-📧 **security@[paxect-team@outlook.com](mailto:paxect-team@outlook.com)**
+📧 **[paxect-team@outlook.com](mailto:paxect-team@outlook.com)**
 
 ---
 
