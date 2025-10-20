@@ -1,4 +1,8 @@
-Contributor Code of Conduct
+<p align="center">
+  <img src="ChatGPT%20Image%202%20okt%202025%2C%2022_33_51.png" alt="PAXECT logo" width="200"/>
+</p>
+
+## Contributor Code of Conduct
 Our Standards
 
 We are committed to maintaining a respectful, safe, and inclusive environment for all contributors, regardless of age, gender, identity, experience level, or background.
