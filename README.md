@@ -82,19 +82,21 @@ It serves as the glue between analytical systems, edge devices, and enterprise r
 
 ---
 
+
 ## 🚀 Demos Included
 
 All demos are deterministic, self-contained, and safe to run locally or in CI.
 
-| Demo | Script                     | Description                                      | Status |
-| ---- | -------------------------- | ------------------------------------------------ | ------ |
-| 01   | `demo_1_local_basic.py`    | Local encode→decode sanity check                 | ✅      |
-| 02   | `demo_2_policy_hmac.py`    | Policy with HMAC: accept signed, reject unsigned | ✅      |
-| 03   | `demo_3_multi_node.py`     | Two Link nodes, per-node lock, both decode       | ✅      |
-| 04   | `demo_4_observability.py`  | JSONL logs → simple metrics summary              | ✅      |
-| 05   | `demo_5_ci_cd_pipeline.py` | CI smoke; emits JUnit XML                        | ✅      |
+| Demo | Script                       | Description                                              | Status |
+| ---- | ---------------------------- | -------------------------------------------------------- | ------ |
+| 01   | `demo_1_local_basic.py`      | Local encode→decode sanity check                         | ✅      |
+| 02   | `demo_2_policy_hmac.py`      | Policy with HMAC: accept signed, reject unsigned         | ✅      |
+| 03   | `demo_3_multi_node.py`       | Two Link nodes, per-node lock, both decode               | ✅      |
+| 04   | `demo_4_observability.py`    | JSONL logs → simple metrics summary                      | ✅      |
+| 05   | `demo_5_ci_cd_pipeline.py`   | CI smoke; emits JUnit XML                                | ✅      |
+| 06   | `demo_6_fail_and_recover.py` | Simulated failure & automatic recovery (resilience test) | ✅      |
 
-Run all demos one by one:
+Run all demos sequentially:
 
 ```bash
 python3 demos/demo_1_local_basic.py
@@ -102,6 +104,7 @@ python3 demos/demo_2_policy_hmac.py
 python3 demos/demo_3_multi_node.py
 python3 demos/demo_4_observability.py
 python3 demos/demo_5_ci_cd_pipeline.py
+python3 demos/demo_6_fail_and_recover.py
 ```
 
 ---
@@ -110,14 +113,15 @@ python3 demos/demo_5_ci_cd_pipeline.py
 
 ```text
 paxect-link-plugin/
-├── paxect_link_plugin.py       # Main inbox/outbox bridge (policy, HMAC, logging)
+├── paxect_link_plugin.py       # Main inbox/outbox bridge (policy, HMAC, logging, resilience)
 ├── paxect_core.py              # PAXECT Core (deterministic container engine)
-└── demos/                      # Enterprise demos 1–5
+└── demos/                      # Enterprise demos 1–6
     ├── demo_1_local_basic.py
     ├── demo_2_policy_hmac.py
     ├── demo_3_multi_node.py
     ├── demo_4_observability.py
-    └── demo_5_ci_cd_pipeline.py
+    ├── demo_5_ci_cd_pipeline.py
+    └── demo_6_fail_and_recover.py
 ```
 
 ---
@@ -140,15 +144,15 @@ pip install zstandard psutil
 
 ## ✅ Verification
 
-Health:
+**Health check**
 
 ```bash
 python3 paxect_link_plugin.py
 ```
 
-Expected: startup banner, paths, and a “Watching…” line (Ctrl+C to stop).
+Expected: startup banner, path summary, and “Watching…” line (Ctrl + C to stop).
 
-Deterministic relay check:
+**Deterministic relay check**
 
 ```bash
 export PAXECT_CORE="python $(pwd)/paxect_core.py"
@@ -172,49 +176,87 @@ echo "hello" > /tmp/pax_in/hello.txt
 # Expect: hello.freq (+ .sha256) appears; 'hello' appears in outbox
 ```
 
+✅ This manual relay verification remains valid for all demos 1–6.
+
 ---
 
 ## 🧪 Testing & Coverage
 
-The demos double as smoke tests. For CI integration, use **Demo 5**:
+The demos double as smoke tests for continuous integration.
+
+| Demo | Purpose                                   | CI Integration                          |
+| ---- | ----------------------------------------- | --------------------------------------- |
+| 05   | Deterministic encode/decode + JUnit XML   | GitHub Actions, Jenkins, GitLab         |
+| 06   | Fault-injection + automatic self-recovery | Stability regression / resilience tests |
+
+**Example run:**
 
 ```bash
-python3 demos/demo_5_ci_cd_pipeline.py ; echo "exit=$?"
-# JUnit XML: /tmp/paxect_demo5/junit_smoke.xml
+python3 demos/demo_5_ci_cd_pipeline.py
+python3 demos/demo_6_fail_and_recover.py
 ```
 
 ---
 
-## 📦 Integration in CI/CD
-
-**GitHub Actions Example**
+## 📦 Integration in CI/CD (GitHub Actions Example)
 
 ```yaml
+name: PAXECT Link — CI/CD Smoke & Resilience Suite
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
 jobs:
-  paxect-link-smoke:
+  paxect-link-suite:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.12
+        uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Venv + deps
+
+      - name: Create venv + install dependencies
         run: |
           python -m venv .venv
           source .venv/bin/activate
           python -m pip install --upgrade pip
           pip install zstandard psutil
-      - name: Demo 5 (JUnit)
+
+      - name: Run Demo 5 (CI/CD Smoke)
         run: |
           source .venv/bin/activate
           python demos/demo_5_ci_cd_pipeline.py
-      - name: Upload JUnit
+
+      - name: Upload JUnit results
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: paxect-junit
           path: /tmp/paxect_demo5/junit_smoke.xml
+
+      - name: Run Demo 6 (Fail & Self-Recover)
+        run: |
+          source .venv/bin/activate
+          python demos/demo_6_fail_and_recover.py
 ```
+
+**Explanation**
+
+| Step   | Purpose                                                                    |
+| ------ | -------------------------------------------------------------------------- |
+| Demo 5 | Deterministic CI/CD smoke test — verifies Core + Link and emits JUnit XML. |
+| Upload | Publishes `junit_smoke.xml` as CI artifact.                                |
+| Demo 6 | Fault-injection + auto-recovery check; ensures resilience under failure.   |
+
+✅ Both steps exit 0 when healthy, allowing green CI pipelines.
 
 ---
 
@@ -230,13 +272,58 @@ Producer(s)            PAXECT Link                 Consumer(s)
 
 ## 📈 Verification Summary
 
-| Environment           | Result                                  |
-| --------------------- | --------------------------------------- |
-| Ubuntu 24.04 (x86_64) | ✅ All demos completed deterministically |
-| macOS 14 Sonoma       | ✅ Identical hashes across runs          |
-| Windows 11            | ✅ Inbox/outbox relay verified           |
+| Environment           | Result                                      |
+| --------------------- | ------------------------------------------- |
+| Ubuntu 24.04 (x86_64) | ✅ All six demos completed deterministically |
+| macOS 14 Sonoma       | ✅ Identical hashes across runs              |
+| Windows 11            | ✅ Inbox/outbox relay + recovery verified    |
 
 ---
+
+## 🧩 Environment Variables (Link)
+
+| Variable                  | Purpose                            | Example                         |
+| ------------------------- | ---------------------------------- | ------------------------------- |
+| `PAXECT_LINK_INBOX`       | Directory to watch for inputs      | `/tmp/paxect_demo*/inbox`       |
+| `PAXECT_LINK_OUTBOX`      | Directory to write decoded outputs | `/tmp/paxect_demo*/outbox`      |
+| `PAXECT_LINK_POLICY`      | JSON policy file                   | `/tmp/paxect_demo*/policy.json` |
+| `PAXECT_LINK_LOG`         | JSONL log file                     | `/tmp/paxect_demo*/log.jsonl`   |
+| `PAXECT_LINK_MANIFEST`    | Self manifest path                 | `/tmp/.../link_manifest.json`   |
+| `PAXECT_LINK_HMAC_KEY`    | HMAC key for signed manifests      | `supersecret-demo-hmac-key`     |
+| `PAXECT_LINK_LOCK`        | Lock file path (per node)          | `/tmp/.../.paxect_link.lock`    |
+| `PAXECT_CORE`             | How to invoke Core                 | `python paxect_core.py`         |
+| `PAXECT_LINK_POLL_SEC`    | Polling interval                   | `2.0`                           |
+| `PAXECT_LINK_BACKOFF_SEC` | Backoff after failure              | `2.0`                           |
+
+---
+
+## 🔐 Policy Tips
+
+* Add your **hostname** (e.g., `PAXECT-Interface`) to `trusted_nodes`.
+* Include `.freq` in `allowed_suffixes`.
+* Set `require_sig: true` to enforce HMAC verification.
+* Unsigned or invalid peer manifests will be rejected automatically.
+
+---
+
+## ⚠️ Troubleshooting
+
+* **Policy blocks (untrusted_node)** → add your hostname to `trusted_nodes`.
+* **Two Link instances, one exits** → use unique lock files per node.
+* **PEP 668 errors on Ubuntu** → use a virtual environment.
+* **No output in outbox** → check JSONL log for `policy_block`, `encode_error`, `decode_error`.
+* **Corrupted input (Demo 6)** → see `checksum_mismatch` → then `decode` in log for recovery proof.
+
+---
+
+## 🪪 License
+
+All demo scripts and plugins are licensed under **Apache-2.0** (see file headers).
+
+---
+
+✅ **PAXECT Link Plugin Demo Suite Complete — Enterprise-Ready (1 – 6)**
+
 
 
 
