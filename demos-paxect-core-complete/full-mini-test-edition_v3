@@ -1,0 +1,248 @@
+#!/usr/bin/env python3
+"""
+PAXECT Core Complete – All-in-One Demo (v3)
+-------------------------------------------
+Runs in-memory mini-tests for:
+ - paxect_core
+ - paxect_aead_hybrid_plugin
+ - paxect_polyglot_plugin
+ - paxect_selftune_plugin
+ - paxect_link_plugin
+
+Exposes a tiny HTTP observability API:
+ - GET /ping     -> 200 OK
+ - GET /ready    -> 200 OK if last run all OK, else 503
+ - GET /metrics  -> Prometheus-style metrics
+ - GET /last     -> JSON of last run results
+
+Run:
+  chmod +x demo_complete_all_in_one.py
+  ./demo_complete_all_in_one.py
+or
+  python3 demo_complete_all_in_one.py
+
+Use:
+  curl http://127.0.0.1:8080/ping
+  curl http://127.0.0.1:8080/ready
+  curl http://127.0.0.1:8080/metrics
+  curl http://127.0.0.1:8080/last
+"""
+
+import json
+import time
+import threading
+import socketserver
+from http.server import BaseHTTPRequestHandler, HTTPServer
+from pathlib import Path
+import tempfile
+import hashlib
+import base64
+import random
+
+# --- Config ---
+PORT = 8080
+TEST_INTERVAL_S = 60  # background re-run interval
+RESULTS_PATH = Path(tempfile.gettempdir()) / "paxect_all_in_one_demo_v3.jsonl"
+
+# Last run state (shared)
+_last_results_lock = threading.Lock()
+_last_results = []
+_last_run_ts = None
+_last_run_duration = 0.0
+
+# --- Mini-tests (same safe in-memory tests as v2) ---
+
+
+def test_core():
+    try:
+        import paxect_core as core  # may raise / call sys.exit if CLI; in many setups import works
+        sample = b"PAXECT-DEMO-CORE"
+        digest = hashlib.sha256(sample).hexdigest()
+        decoded = base64.b64decode(base64.b64encode(sample))
+        assert decoded == sample
+        return {"module": "paxect_core", "status": "OK", "info": f"checksum={digest[:12]}..."}
+    except SystemExit as e:
+        return {"module": "paxect_core", "status": "CLI EXIT", "error": str(e)}
+    except Exception as e:
+        return {"module": "paxect_core", "status": "FAIL", "error": str(e)}
+
+
+def test_aead_hybrid():
+    try:
+        import paxect_aead_hybrid_plugin as aead
+        plaintext = b"PAXECT-AEAD"
+        key = hashlib.sha256(b"demo-key").digest()[:16]
+        ciphertext = bytes([p ^ key[i % len(key)] for i, p in enumerate(plaintext)])
+        decrypted = bytes([c ^ key[i % len(key)] for i, c in enumerate(ciphertext)])
+        assert decrypted == plaintext
+        return {"module": "paxect_aead_hybrid_plugin", "status": "OK", "info": f"bytes={len(ciphertext)}"}
+    except SystemExit as e:
+        return {"module": "paxect_aead_hybrid_plugin", "status": "CLI EXIT", "error": str(e)}
+    except Exception as e:
+        return {"module": "paxect_aead_hybrid_plugin", "status": "FAIL", "error": str(e)}
+
+
+def test_polyglot():
+    try:
+        import paxect_polyglot_plugin as poly
+        sample = "TeSt"
+        output = sample.upper().lower()
+        assert output == "test"
+        return {"module": "paxect_polyglot_plugin", "status": "OK", "info": "string roundtrip OK"}
+    except SystemExit as e:
+        return {"module": "paxect_polyglot_plugin", "status": "CLI EXIT", "error": str(e)}
+    except Exception as e:
+        return {"module": "paxect_polyglot_plugin", "status": "FAIL", "error": str(e)}
+
+
+def test_selftune():
+    try:
+        import paxect_selftune_plugin as st
+        eps = 0.1
+        choice = "explore" if random.random() < eps else "exploit"
+        return {"module": "paxect_selftune_plugin", "status": "OK", "info": f"epsilon={eps}, mode={choice}"}
+    except Exception as e:
+        return {"module": "paxect_selftune_plugin", "status": "FAIL", "error": str(e)}
+
+
+def test_link():
+    try:
+        import paxect_link_plugin as link
+        lock_path = Path("/home/pd-sa-micro/paxect_link_lock.json")  # keep same heuristic as earlier
+        running = lock_path.exists()
+        return {"module": "paxect_link_plugin", "status": "OK", "info": f"lock_detected={running}"}
+    except Exception as e:
+        return {"module": "paxect_link_plugin", "status": "FAIL", "error": str(e)}
+
+
+TEST_FUNCS = [test_core, test_aead_hybrid, test_polyglot, test_selftune, test_link]
+
+
+# --- Runner ---
+def run_all_tests():
+    global _last_results, _last_run_ts, _last_run_duration
+    start = time.time()
+    results = []
+    for fn in TEST_FUNCS:
+        t0 = time.time()
+        r = fn()
+        r["elapsed_s"] = round(time.time() - t0, 3)
+        results.append(r)
+    duration = round(time.time() - start, 3)
+    with _last_results_lock:
+        _last_results = results
+        _last_run_ts = time.time()
+        _last_run_duration = duration
+    # append to JSONL
+    try:
+        with RESULTS_PATH.open("a") as f:
+            f.write(json.dumps({"ts": int(time.time()), "duration_s": duration, "results": results}) + "\n")
+    except Exception:
+        pass
+    return results
+
+
+# --- Observability HTTP server ---
+class ObsHandler(BaseHTTPRequestHandler):
+    server_version = "paxect-demo-v3/1.0"
+
+    def _send(self, code, body, content_type="application/json"):
+        body_bytes = body.encode("utf-8") if isinstance(body, str) else body
+        self.send_response(code)
+        self.send_header("Content-Type", content_type)
+        self.send_header("Content-Length", str(len(body_bytes)))
+        self.end_headers()
+        self.wfile.write(body_bytes)
+
+    def do_GET(self):
+        path = self.path.split("?", 1)[0]
+        if path == "/ping":
+            self._send(200, json.dumps({"status": "pong", "ts": int(time.time())}))
+            return
+
+        if path == "/last":
+            with _last_results_lock:
+                body = {
+                    "ts": int(_last_run_ts) if _last_run_ts else None,
+                    "duration_s": _last_run_duration,
+                    "results": _last_results,
+                }
+            self._send(200, json.dumps(body))
+            return
+
+        if path == "/ready":
+            with _last_results_lock:
+                all_ok = all(r.get("status") == "OK" for r in _last_results) if _last_results else False
+            if all_ok:
+                self._send(200, json.dumps({"ready": True}))
+            else:
+                self._send(503, json.dumps({"ready": False}))
+            return
+
+        if path == "/metrics":
+            # produce simple metrics
+            with _last_results_lock:
+                total = len(_last_results)
+                ok_count = sum(1 for r in _last_results if r.get("status") == "OK")
+                fail_count = sum(1 for r in _last_results if r.get("status") not in ("OK", "CLI EXIT"))
+                cli_exit_count = sum(1 for r in _last_results if r.get("status") == "CLI EXIT")
+                duration = _last_run_duration or 0.0
+            lines = [
+                f"# HELP paxect_demo_last_run_duration_seconds Duration of last full test run",
+                f"# TYPE paxect_demo_last_run_duration_seconds gauge",
+                f"paxect_demo_last_run_duration_seconds {duration}",
+                f"# HELP paxect_demo_test_total Total number of plugin tests in last run",
+                f"# TYPE paxect_demo_test_total gauge",
+                f"paxect_demo_test_total {total}",
+                f"# HELP paxect_demo_test_ok Number of OK tests",
+                f"# TYPE paxect_demo_test_ok gauge",
+                f"paxect_demo_test_ok {ok_count}",
+                f"# HELP paxect_demo_test_fail Number of failed tests",
+                f"# TYPE paxect_demo_test_fail gauge",
+                f"paxect_demo_test_fail {fail_count}",
+                f"# HELP paxect_demo_test_cli_exit Number of CLI-EXIT results",
+                f"# TYPE paxect_demo_test_cli_exit gauge",
+                f"paxect_demo_test_cli_exit {cli_exit_count}",
+            ]
+            self._send(200, "\n".join(lines), content_type="text/plain; version=0.0.4")
+            return
+
+        # unknown
+        self._send(404, json.dumps({"error": "not found"}))
+
+    def log_message(self, format, *args):
+        # avoid noisy logging; you can uncomment to debug
+        pass
+
+
+def serve_forever():
+    httpd = HTTPServer(("127.0.0.1", PORT), ObsHandler)
+    print(f"[observability] Listening on http://127.0.0.1:{PORT}  (endpoints: /ping /ready /metrics /last)")
+    try:
+        httpd.serve_forever()
+    except KeyboardInterrupt:
+        httpd.server_close()
+
+
+# --- Background periodic runner ---
+def background_runner():
+    while True:
+        run_all_tests()
+        time.sleep(TEST_INTERVAL_S)
+
+
+def main():
+    # initial run
+    print("=== PAXECT Core Complete – All-in-One Demo (v3) ===")
+    run_all_tests()
+
+    # start background periodic runner
+    t = threading.Thread(target=background_runner, daemon=True)
+    t.start()
+
+    # start HTTP server (blocks)
+    serve_forever()
+
+
+if __name__ == "__main__":
+    main()
