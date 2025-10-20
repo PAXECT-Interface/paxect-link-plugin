@@ -1,0 +1,32 @@
+/etc/systemd/system/paxect-enterprise-stability.service
+use:sudo
+[Unit]
+Description=PAXECT Enterprise Stability Demo
+After=network.target
+
+[Service]
+Type=simple
+User=YOUR_USER_HERE
+WorkingDirectory=/home/pd-sa-micro
+ExecStart=/usr/bin/env python3 /home/pd-sa-micro/demo_enterprise_stability.py
+Restart=on-failure
+RestartSec=5
+Environment=SAFE_MODE=0
+StandardOutput=append:/var/log/paxect_enterprise_stability.log
+StandardError=append:/var/log/paxect_enterprise_stability.log
+
+[Install]
+WantedBy=multi-user.target
+
+sudo systemctl daemon-reload
+sudo systemctl enable --now paxect-enterprise-stability.service
+sudo journalctl -u paxect-enterprise-stability -f
+
+chmod +x demo_enterprise_stability.py
+SAFE_MODE=1 RUN_SECONDS=60 ITERATION_S=5 python3 demo_enterprise_stability.py
+
+24h. run
+chmod +x demo_enterprise_stability.py
+python3 demo_enterprise_stability.py
+
+Logfile: /tmp/paxect_enterprise_stability.jsonl
