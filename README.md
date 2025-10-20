@@ -319,8 +319,7 @@ Sponsorship enables deterministic QA across operating systems.
  **How to get involved**
 - [Become a GitHub Sponsor](https://github.com/sponsors/PAXECT-Interface)  
 
-**Contact:**
-📧 enterprise@[PAXECT-Team@outlook.com](mailto:PAXECT-Team@outlook.com)
+
 
 ---
 
@@ -337,7 +336,8 @@ Sponsorship enables deterministic QA across operating systems.
 * **Naming/branding:** Do not use the PAXECT name/logo for derived projects without written permission; see `TRADEMARKS.md`.
 
 
----
+**Contact:**
+📧 [PAXECT-Team@outlook.com](mailto:PAXECT-Team@outlook.com)
 
 
 ✅ **Deterministic · Reproducible · Offline**
@@ -346,7 +346,7 @@ Copyright© 2025 PAXECT Systems. Deterministic interoperability for the modern e
 
 
 
-
+---
 
 <p align="center">
   <img src="ChatGPT%20Image%202%20okt%202025%2C%2022_33_51.png" alt="PAXECT logo" width="200"/>
