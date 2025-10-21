@@ -408,9 +408,9 @@ Sponsorship enables deterministic QA across operating systems.
 
 
 
----
 
-## 🪪 License
+
+
 
 ---
 
