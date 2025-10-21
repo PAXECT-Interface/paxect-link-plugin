@@ -16,6 +16,8 @@
 
 # 🔗 **PAXECT Link — Deterministic Inbox/Outbox Bridge**
 
+> Status: **v1.0.0 — Initial Public Release** (see Releases)
+
 Secure, deterministic file relay across processes, runtimes, and operating systems — fully **offline**.
 The **PAXECT Link Plugin** provides a reproducible, verifiable bridge by auto-encoding non-`.freq` files **to** `.freq` and auto-decoding `.freq` containers **to** raw files, powered by **PAXECT Core**.
 
