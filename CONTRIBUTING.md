@@ -85,12 +85,13 @@ python3 -m pytest -v
 
 * Before submitting, verify that **all 5 demo scripts** still execute successfully:
 
-  ```bash
-  python3 demos/demo_1_local_basic.py
-  python3 demos/demo_2_policy_hmac.py
-  python3 demos/demo_3_multi_node.py
-  python3 demos/demo_4_observability.py
-  python3 demos/demo_5_ci_cd_pipeline.py
+python3 demos/01_auto_relay_simulation.py
+python3 demos/02_live_relay_monitor.py
+python3 demos/03_multi_node_link.py
+python3 demos/04_overhead_guard_link.py
+python3 demos/05_ci_cd_pipeline_smoke.py
+python3 demos/06_fail_and_recover.py
+
   ```
 
 * Each demo must produce **consistent deterministic output** across Linux, macOS, and Windows.
