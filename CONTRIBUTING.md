@@ -83,7 +83,7 @@ python3 -m pytest -v
 
 * Add a clear description and link related issues.
 
-* Before submitting, verify that **all 5 demo scripts** still execute successfully:
+* Before submitting, verify that **all 6 demo scripts** still execute successfully:
 
 
 ```bash
