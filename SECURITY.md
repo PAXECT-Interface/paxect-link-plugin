@@ -11,25 +11,38 @@ Older versions are provided as-is without any security guarantee.
 
 | Version | Supported |
 |----------|------------|
-| main     | ✅ |
+| main     | ✅ Active |
 | 1.x      | ⚠️ Limited (best effort) |
 
-If you discover a security vulnerability, please report it privately:
+---
 
-    Email: security@PAXECT-Team@outlook.com (preferred)
-    GitHub: use the “Private vulnerability report” option under Security → Advisories
-    Do not create public issues or pull requests for unresolved vulnerabilities.
+## Reporting a Vulnerability
 
-Disclosure Process
+If you discover a security vulnerability, please report it **privately**:
 
-    Reports are acknowledged within 72 hours.
-    A maintainer will contact you for details and a reproduction (if needed).
-    A fix or mitigation will be prepared privately.
-    Once resolved, a public advisory and changelog entry will be published.
-    Researchers are credited (if they wish) after coordinated disclosure.
+- Email: **enterprise@PAXECT-Team@outlook.com** (preferred)  
+- GitHub: use the “Private vulnerability report” option under *Security → Advisories*  
+- Do **not** create public issues or pull requests for unresolved vulnerabilities.
 
-Guidelines
+---
 
-    Follow responsible disclosure practices.
-    Avoid testing on production systems.
-    No social engineering, spam, or denial-of-service testing.
+## Disclosure Process
+
+1. Reports are acknowledged within **72 hours**.  
+2. A maintainer will contact you for details and a reproduction (if needed).  
+3. A fix or mitigation will be prepared privately.  
+4. Once resolved, a public advisory and changelog entry will be published.  
+5. Researchers are credited (if they wish) after coordinated disclosure.
+
+---
+
+## Guidelines
+
+- Follow responsible disclosure practices.  
+- Avoid testing on production or live systems.  
+- No social engineering, spam, or denial-of-service testing.  
+- Do not publicly disclose details before an official patch or advisory.
+
+---
+
+© 2025 **PAXECT Systems** — All rights reserved.
