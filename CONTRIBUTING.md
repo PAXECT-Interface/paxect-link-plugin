@@ -85,6 +85,8 @@ python3 -m pytest -v
 
 * Before submitting, verify that **all 5 demo scripts** still execute successfully:
 
+
+```bash
 python3 demos/01_auto_relay_simulation.py
 python3 demos/02_live_relay_monitor.py
 python3 demos/03_multi_node_link.py
