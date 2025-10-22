@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1280" viewBox="0 0 2200 1280" role="img" aria-label="PAXECT Architecture (Brand v18)">
+  <defs>
+    <style>
+      .title { font: 800 50px 'system-ui', 'Inter', 'Segoe UI', Roboto, Arial, sans-serif; fill:#1F2937; }
+      .h2 { font: 800 38px 'system-ui', 'Inter', 'Segoe UI', Roboto, Arial, sans-serif; fill:#1F2937; }
+      .label { font: 700 24px 'system-ui', 'Inter', 'Segoe UI', Roboto, Arial, sans-serif; fill:#1F2937; }
+      .sub { font: 600 22px 'system-ui', 'Inter', 'Segoe UI', Roboto, Arial, sans-serif; fill:#475569; }
+      .mono { font: 800 24px 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace; fill:#1F2937; }
+      .pill { font: 700 18px 'system-ui', 'Inter', 'Segoe UI', Roboto, Arial, sans-serif; fill:#1F2937; }
+    </style>
+    <marker id="arrowSmall" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1F2937" />
+    </marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="1.2" stdDeviation="1.6" flood-color="#1F2937" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+<text class="title" x="1100" y="96" text-anchor="middle">PAXECT ARCHITECTURE</text>
+<rect x="1960" y="60" width="180" height="44" rx="22" ry="22" fill="#DCFCE7" stroke="#22C55E" stroke-width="2"/>
+<text class="pill" x="2050" y="86" text-anchor="middle">Zero AI</text>
+<rect x="120" y="300" width="300" height="110" rx="24" ry="24" fill="#FFF7ED" stroke="#F97316" stroke-width="2.5" filter="url(#shadow)"/>
+<text class="label" x="270.0" y="344" text-anchor="middle">Files</text>
+<line x1="420" y1="355.0" x2="520" y2="355.0" stroke="#1F2937" stroke-width="3" marker-end="url(#arrowSmall)"/>
+<rect x="120" y="470" width="300" height="110" rx="24" ry="24" fill="#FFF7ED" stroke="#F97316" stroke-width="2.5" filter="url(#shadow)"/>
+<text class="label" x="270.0" y="514" text-anchor="middle">Streams</text>
+<line x1="420" y1="525.0" x2="520" y2="525.0" stroke="#1F2937" stroke-width="3" marker-end="url(#arrowSmall)"/>
+<rect x="120" y="640" width="300" height="110" rx="24" ry="24" fill="#FFF7ED" stroke="#F97316" stroke-width="2.5" filter="url(#shadow)"/>
+<text class="label" x="270.0" y="684" text-anchor="middle">Telemetry / Logs</text>
+<line x1="420" y1="695.0" x2="520" y2="695.0" stroke="#1F2937" stroke-width="3" marker-end="url(#arrowSmall)"/>
+<rect x="120" y="810" width="300" height="110" rx="24" ry="24" fill="#FFF7ED" stroke="#F97316" stroke-width="2.5" filter="url(#shadow)"/>
+<text class="label" x="270.0" y="854" text-anchor="middle">Updates</text>
+<line x1="420" y1="865.0" x2="520" y2="865.0" stroke="#1F2937" stroke-width="3" marker-end="url(#arrowSmall)"/>
+<rect x="520" y="240" width="620" height="760" rx="28" ry="28" fill="#FED7AA" stroke="#F97316" stroke-width="3.2" filter="url(#shadow)"/>
+<text class="h2" x="830.0" y="360" text-anchor="middle">PAXECT Core</text>
+<text class="mono" x="830.0" y="405" text-anchor="middle">(.freq Container)</text>
+<text class="sub" x="830.0" y="450" text-anchor="middle">Multi‑OS / Cross‑Language Ready</text>
+<rect x="661.0" y="500" width="204" height="40" rx="20" ry="20" fill="#FFEDD5" stroke="#F97316" stroke-width="2"/>
+<text class="pill" x="763.0" y="523.0" text-anchor="middle">Linux (Ubuntu)</text>
+<rect x="879.0" y="500" width="120" height="40" rx="20" ry="20" fill="#FFEDD5" stroke="#F97316" stroke-width="2"/>
+<text class="pill" x="939.0" y="523.0" text-anchor="middle">macOS</text>
+<rect x="601.0" y="552" width="276" height="40" rx="20" ry="20" fill="#FFEDD5" stroke="#F97316" stroke-width="2"/>
+<text class="pill" x="739.0" y="575.0" text-anchor="middle">Windows (PowerShell)</text>
+<rect x="891.0" y="552" width="168" height="40" rx="20" ry="20" fill="#FFEDD5" stroke="#F97316" stroke-width="2"/>
+<text class="pill" x="975.0" y="575.0" text-anchor="middle">Windows CMD</text>
+<rect x="569.0" y="604" width="120" height="40" rx="20" ry="20" fill="#FFEDD5" stroke="#F97316" stroke-width="2"/>
+<text class="pill" x="629.0" y="627.0" text-anchor="middle">FreeBSD</text>
+<rect x="703.0" y="604" width="120" height="40" rx="20" ry="20" fill="#FFEDD5" stroke="#F97316" stroke-width="2"/>
+<text class="pill" x="763.0" y="627.0" text-anchor="middle">OpenBSD</text>
+<rect x="837.0" y="604" width="120" height="40" rx="20" ry="20" fill="#FFEDD5" stroke="#F97316" stroke-width="2"/>
+<text class="pill" x="897.0" y="627.0" text-anchor="middle">ARMv7</text>
+<rect x="971.0" y="604" width="120" height="40" rx="20" ry="20" fill="#FFEDD5" stroke="#F97316" stroke-width="2"/>
+<text class="pill" x="1031.0" y="627.0" text-anchor="middle">RISC‑V</text>
+<rect x="1180" y="295.0" width="380" height="120" rx="24" ry="24" fill="#FFF7ED" stroke="#F97316" stroke-width="2.5" filter="url(#shadow)"/>
+<text class="label" x="1370.0" y="339.0" text-anchor="middle">AES Secure</text>
+<text class="sub" x="1370.0" y="375.0" text-anchor="middle">Encryption</text>
+<line x1="1140" y1="355.0" x2="1180" y2="355.0" stroke="#1F2937" stroke-width="3" marker-end="url(#arrowSmall)"/>
+<rect x="1180" y="465.0" width="380" height="120" rx="24" ry="24" fill="#FFF7ED" stroke="#F97316" stroke-width="2.5" filter="url(#shadow)"/>
+<text class="label" x="1370.0" y="509.0" text-anchor="middle">Polyglot</text>
+<text class="sub" x="1370.0" y="545.0" text-anchor="middle">Language Bindings</text>
+<line x1="1140" y1="525.0" x2="1180" y2="525.0" stroke="#1F2937" stroke-width="3" marker-end="url(#arrowSmall)"/>
+<rect x="1180" y="635.0" width="380" height="120" rx="24" ry="24" fill="#FFF7ED" stroke="#F97316" stroke-width="2.5" filter="url(#shadow)"/>
+<text class="label" x="1370.0" y="679.0" text-anchor="middle">SelfTune 5‑in‑1</text>
+<text class="sub" x="1370.0" y="715.0" text-anchor="middle">Performance</text>
+<line x1="1140" y1="695.0" x2="1180" y2="695.0" stroke="#1F2937" stroke-width="3" marker-end="url(#arrowSmall)"/>
+<rect x="1180" y="805.0" width="380" height="120" rx="24" ry="24" fill="#FFF7ED" stroke="#F97316" stroke-width="2.5" filter="url(#shadow)"/>
+<text class="label" x="1370.0" y="849.0" text-anchor="middle">Link</text>
+<text class="sub" x="1370.0" y="885.0" text-anchor="middle">Inbox/Outbox Bridge</text>
+<line x1="1140" y1="865.0" x2="1180" y2="865.0" stroke="#1F2937" stroke-width="3" marker-end="url(#arrowSmall)"/>
+<rect x="1208" y="603.0" width="120" height="40" rx="20" ry="20" fill="#FFEDD5" stroke="#F97316" stroke-width="2"/>
+<text class="pill" x="1268.0" y="626.0" text-anchor="middle">Python</text>
+<rect x="1318" y="603.0" width="120" height="40" rx="20" ry="20" fill="#FFEDD5" stroke="#F97316" stroke-width="2"/>
+<text class="pill" x="1378.0" y="626.0" text-anchor="middle">JS</text>
+<rect x="1408" y="603.0" width="120" height="40" rx="20" ry="20" fill="#FFEDD5" stroke="#F97316" stroke-width="2"/>
+<text class="pill" x="1468.0" y="626.0" text-anchor="middle">Go</text>
+<rect x="1600" y="300.0" width="420" height="110" rx="24" ry="24" fill="#FFEDD5" stroke="#F97316" stroke-width="2.5" filter="url(#shadow)"/>
+<text class="label" x="1810.0" y="344.0" text-anchor="middle">Containers (.freq)</text>
+<text class="sub" x="1810.0" y="380.0" text-anchor="middle">via AES / Core</text>
+<line x1="1560" y1="355.0" x2="1600" y2="355.0" stroke="#1F2937" stroke-width="3" marker-end="url(#arrowSmall)"/>
+<rect x="1600" y="470.0" width="420" height="110" rx="24" ry="24" fill="#FFEDD5" stroke="#F97316" stroke-width="2.5" filter="url(#shadow)"/>
+<text class="label" x="1810.0" y="514.0" text-anchor="middle">Applications</text>
+<text class="sub" x="1810.0" y="550.0" text-anchor="middle">via Polyglot</text>
+<line x1="1560" y1="525.0" x2="1600" y2="525.0" stroke="#1F2937" stroke-width="3" marker-end="url(#arrowSmall)"/>
+<rect x="1600" y="640.0" width="420" height="110" rx="24" ry="24" fill="#FFEDD5" stroke="#F97316" stroke-width="2.5" filter="url(#shadow)"/>
+<text class="label" x="1810.0" y="684.0" text-anchor="middle">Logs / Monitoring</text>
+<text class="sub" x="1810.0" y="720.0" text-anchor="middle">via SelfTune</text>
+<line x1="1560" y1="695.0" x2="1600" y2="695.0" stroke="#1F2937" stroke-width="3" marker-end="url(#arrowSmall)"/>
+<rect x="1600" y="810.0" width="420" height="110" rx="24" ry="24" fill="#FFEDD5" stroke="#F97316" stroke-width="2.5" filter="url(#shadow)"/>
+<text class="label" x="1810.0" y="854.0" text-anchor="middle">Cross‑OS / Network Links</text>
+<text class="sub" x="1810.0" y="890.0" text-anchor="middle">via Link</text>
+<rect x="1600" y="960.0" width="420" height="110" rx="24" ry="24" fill="#FFEDD5" stroke="#F97316" stroke-width="2.5" filter="url(#shadow)"/>
+<text class="label" x="1810.0" y="1004.0" text-anchor="middle">Files (Decode)</text>
+<text class="sub" x="1810.0" y="1040.0" text-anchor="middle">via Link → Core</text>
+<line x1="1560" y1="865.0" x2="1590" y2="865.0" stroke="#1F2937" stroke-width="3" marker-end="url(#arrowSmall)"/>
+<circle cx="1590" cy="865.0" r="4" fill="#1F2937"/>
+<line x1="1590" y1="865.0" x2="1600" y2="865.0" stroke="#1F2937" stroke-width="3" marker-end="url(#arrowSmall)"/>
+<path d="M 1590 865.0 H 1590 V 1015.0 H 1600" fill="none" stroke="#1F2937" stroke-width="3" marker-end="url(#arrowSmall)"/>
+<text class="title" x="1100" y="1240" text-anchor="middle">PAXECT: Deterministic • Link-Based • Production-Ready</text>
+</svg>
