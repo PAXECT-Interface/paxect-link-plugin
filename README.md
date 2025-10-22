@@ -444,10 +444,6 @@ Copyright© 2025 PAXECT Systems. Deterministic interoperability for the modern e
   <img src="ChatGPT%20Image%202%20okt%202025%2C%2022_33_51.png" alt="PAXECT logo" width="200"/>
 </p>
 
-<p align="center">
-  <img src="ChatGPT%20Image%202%20okt%202025,%2022_33_51.png" alt="PAXECT logo" width="200"/>
-</p>
-
 
 [![Star this repo](https://img.shields.io/badge/⭐%20Star-this%20repo-orange)](../../stargazers)
 [![CI](https://img.shields.io/badge/CI-passing-brightgreen.svg)](../../actions)
@@ -843,63 +839,8 @@ paxect-core-complete, deterministic-runtime, reproducible-pipelines, secure-data
 ---
 
 
-<p align="center">
-  <img src="ChatGPT%20Image%202%20okt%202025%2C%2022_33_51.png" alt="PAXECT logo" width="200"/>
-</p>
-
----
 
 
-<p align="center">
-  <img src="ChatGPT%20Image%202%20okt%202025%2C%2022_33_51.png" alt="PAXECT logo" width="200"/>
-</p>
-
----
-
-
-
-<p align="center">
-  <img src="ChatGPT%20Image%202%20okt%202025%2C%2022_33_51.png" alt="PAXECT logo" width="200"/>
-</p>
-
----
-
-
-<p align="center">
-  <img src="ChatGPT%20Image%202%20okt%202025%2C%2022_33_51.png" alt="PAXECT logo" width="200"/>
-</p>
-
----
-
-
-<p align="center">
-  <img src="ChatGPT%20Image%202%20okt%202025%2C%2022_33_51.png" alt="PAXECT logo" width="200"/>
-</p>
-
----
-
-
-<p align="center">
-  <img src="ChatGPT%20Image%202%20okt%202025%2C%2022_33_51.png" alt="PAXECT logo" width="200"/>
-</p>
-
----
-
-
-
-
-<p align="center">
-  <img src="ChatGPT%20Image%202%20okt%202025%2C%2022_33_51.png" alt="PAXECT logo" width="200"/>
-</p>
-
----
-
-
-<p align="center">
-  <img src="ChatGPT%20Image%202%20okt%202025%2C%2022_33_51.png" alt="PAXECT logo" width="200"/>
-</p>
-
----
 
 
 ## Keywords & Topics
