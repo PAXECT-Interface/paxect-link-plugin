@@ -15,6 +15,9 @@
   <img alt="Release" src="https://img.shields.io/github/v/release/PAXECT-Interface/paxect-link-plugin?label=link">
 </a>
 
+
+> 🌐 Learn more about the ecosystem: [PAXECT Universal Bridge](https://github.com/PAXECT-Interface/paxect-universal-bridge)
+
 ---
 
 # 🔗 **PAXECT Link — Deterministic Inbox/Outbox Bridge**
