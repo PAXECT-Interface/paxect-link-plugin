@@ -22,6 +22,10 @@ Connect all operating systems and programming languages through one reproducible
 🔗 Learn more about the ecosystem:  
 👉 [**PAXECT Universal Bridge ›**](https://github.com/PAXECT-Interface/paxect-universal-bridge)
 
+---
+
+> Looking for the full bundle (Core + plugins + demos)?  
+> See **[PAXECT Core Complete →](https://github.com/PAXECT-Interface/paxect-core-complete)**
 
 
 ---
