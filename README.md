@@ -470,28 +470,22 @@ Copyright© 2025 PAXECT Systems. Deterministic interoperability for the modern e
 # PAXECT Core Complete
 **Status:** v1.0.0 — Initial Public Release — October 22, 2025
 
-**Deterministic, offline-first runtime ecosystem for secure, reproducible, and auditable data pipelines.**  
-Cross-platform, self-tuning, and open-source — built for real-world enterprise innovation, digital hygiene, and NIS2-aligned compliance.
+**The curated PAXECT bundle:** Core + AEAD Hybrid + Polyglot + SelfTune + Link — with **10 integrated demos**, observability, and deterministic performance across OSes.
 
+**What it is:** the official reference implementation of the PAXECT ecosystem — a verified, reproducible, cross-OS runtime that showcases the **multi-OS bridge** and **in-freq multi-channel** architecture in real workflows.
 
+- **Unified Ecosystem:** Core + AEAD + SelfTune + Polyglot + Link in one deterministic bundle  
+- **Reproducibility:** bit-identical behavior across Linux, macOS, Windows (best-effort: BSD, mobile shells)  
+- **Offline-first:** zero telemetry, no network dependencies  
+- **Enterprise-ready:** 10 reproducible demo pipelines, audit trail, and metrics endpoints  
+- **Zero-AI Runtime:** SelfTune provides adaptive guardrails **without** ML or heuristics (no cloud)
 
----
+## Relationship
 
-## Overview
-
-**PAXECT Core Complete** is the official reference implementation of the PAXECT ecosystem.  
-It unifies the verified modules — **Core**, **AEAD Hybrid**, **Polyglot**, **SelfTune**, and **Link** —  
-into one reproducible, cross-OS runtime featuring **10 integrated demos**, advanced observability,  
-and deterministic performance across multiple environments and operating systems.
-
-### Key Highlights
-- **Unified Ecosystem:** Combines Core, AEAD Hybrid, SelfTune, Polyglot, and Link into one verified deterministic bundle.  
-- **Reproducible Pipelines:** Bit-identical behavior across Linux, macOS, Windows, FreeBSD, Android, and iOS.  
-- **Offline-First:** Zero telemetry and no network dependencies — privacy and security by design.  
-- **Enterprise-Grade Validation:** Ten reproducible demo pipelines with built-in audit and metrics endpoints.  
-- **Zero-AI Runtime:** The SelfTune plugin provides adaptive control without machine learning or heuristics.  
-- **Open Source Forever:** Apache-2.0 licensed, transparent governance, and a fair “Path to Paid” sustainability model.
-
+- **PAXECT Core** is a **stand-alone** OS-level deterministic bridge (plugin-capable).  
+- **PAXECT Core Complete** is the **curated bundle** that includes Core **plus** the official plugins and demo suite.  
+Use **Core** when you want a minimal, plug-and-play bridge.  
+Use **Core Complete** when you want the full experience (plugins + demos) out of the box.
 ---
 
 ## Installation
