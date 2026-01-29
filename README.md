@@ -167,7 +167,7 @@ pip install zstandard psutil
 **Health check**
 
 ```bash
-python3 paxect_link_plugin_v2.py
+python3 paxect_link_plugin.py
 ```
 
 Expected: startup banner, path summary, and “Watching…” line (Ctrl + C to stop).
@@ -190,7 +190,7 @@ d={"version":"1.2.0","trusted_nodes":[socket.gethostname(),"localhost"],
 open(p,"w").write(json.dumps(d,indent=2))
 PY
 
-python3 paxect_link_plugin_v2.py   # terminal A, keep running
+python3 paxect_link_plugin.py   # terminal A, keep running
 # terminal B:
 echo "hello" > /tmp/pax_in/hello.txt
 # Expect: hello.freq (+ .sha256) appears; 'hello' appears in outbox
