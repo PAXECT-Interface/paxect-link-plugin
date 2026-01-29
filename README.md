@@ -175,7 +175,7 @@ Expected: startup banner, path summary, and “Watching…” line (Ctrl + C to 
 **Deterministic relay check**
 
 ```bash
-export PAXECT_CORE="python $(pwd)/paxect_core_plugin.py"
+export PAXECT_CORE="python3 $(pwd)/paxect_core_plugin.py"
 export PAXECT_LINK_INBOX=/tmp/pax_in
 export PAXECT_LINK_OUTBOX=/tmp/pax_out
 export PAXECT_LINK_POLICY=/tmp/pax_policy.json
