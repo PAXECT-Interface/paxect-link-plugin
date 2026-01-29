@@ -133,8 +133,8 @@ python3 demos/demo_6_fail_and_recover.py
 
 ```text
 paxect-link-plugin/
-├── paxect_link_plugin.py       # Main inbox/outbox bridge (policy, HMAC, logging, resilience)
-├── paxect_core.py              # PAXECT Core (deterministic container engine)
+├── paxect_link_plugin_v2.py      # Main inbox/outbox bridge (policy, HMAC, logging, resilience)
+├── paxect_core_plugin.py              # PAXECT Core (deterministic container engine)
 └── demos/                      # Enterprise demos 1–6
     ├── demo_1_local_basic.py
     ├── demo_2_policy_hmac.py
@@ -167,7 +167,7 @@ pip install zstandard psutil
 **Health check**
 
 ```bash
-python3 paxect_link_plugin.py
+python3 paxect_link_plugin_v2.py
 ```
 
 Expected: startup banner, path summary, and “Watching…” line (Ctrl + C to stop).
@@ -190,7 +190,7 @@ d={"version":"1.2.0","trusted_nodes":[socket.gethostname(),"localhost"],
 open(p,"w").write(json.dumps(d,indent=2))
 PY
 
-python3 paxect_link_plugin.py   # terminal A, keep running
+python3 paxect_link_plugin_v2.py   # terminal A, keep running
 # terminal B:
 echo "hello" > /tmp/pax_in/hello.txt
 # Expect: hello.freq (+ .sha256) appears; 'hello' appears in outbox
