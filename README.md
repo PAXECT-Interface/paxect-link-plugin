@@ -133,7 +133,7 @@ python3 demos/demo_6_fail_and_recover.py
 
 ```text
 paxect-link-plugin/
-├── paxect_link_plugin_v2.py      # Main inbox/outbox bridge (policy, HMAC, logging, resilience)
+├── paxect_link_plugin.py      # Main inbox/outbox bridge (policy, HMAC, logging, resilience)
 ├── paxect_core_plugin.py              # PAXECT Core (deterministic container engine)
 └── demos/                      # Enterprise demos 1–6
     ├── demo_1_local_basic.py
@@ -175,7 +175,7 @@ Expected: startup banner, path summary, and “Watching…” line (Ctrl + C to 
 **Deterministic relay check**
 
 ```bash
-export PAXECT_CORE="python $(pwd)/paxect_core.py"
+export PAXECT_CORE="python $(pwd)/paxect_core_plugin.py"
 export PAXECT_LINK_INBOX=/tmp/pax_in
 export PAXECT_LINK_OUTBOX=/tmp/pax_out
 export PAXECT_LINK_POLICY=/tmp/pax_policy.json
@@ -311,7 +311,7 @@ Producer(s)            PAXECT Link                 Consumer(s)
 | `PAXECT_LINK_MANIFEST`    | Self manifest path                 | `/tmp/.../link_manifest.json`   |
 | `PAXECT_LINK_HMAC_KEY`    | HMAC key for signed manifests      | `supersecret-demo-hmac-key`     |
 | `PAXECT_LINK_LOCK`        | Lock file path (per node)          | `/tmp/.../.paxect_link.lock`    |
-| `PAXECT_CORE`             | How to invoke Core                 | `python paxect_core.py`         |
+| `PAXECT_CORE`             | How to invoke Core                 | `python paxect_core_plugin.py`         |
 | `PAXECT_LINK_POLL_SEC`    | Polling interval                   | `2.0`                           |
 | `PAXECT_LINK_BACKOFF_SEC` | Backoff after failure              | `2.0`                           |
 
